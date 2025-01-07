@@ -5,20 +5,44 @@ jobs:
   dependencies:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+          cache: 'yarn'
       - name: Check out repository code
-        uses: actions/checkout@v4 
+        uses: actions/checkout@v4
+      - name: run npm install
+        run: npm install
   linters:
     runs-on: ubuntu-latest
     steps:
       - run: echo "linters"
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+          cache: 'yarn'
     needs: [dependencies]
   build:
     runs-on: ubuntu-latest
     steps:
       - run: echo "build"
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
     needs: [dependencies]
   deploy:
     runs-on: ubuntu-latest
     steps:
       - run: echo "deploy"
-    needs: [dependencies, build] 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+          cache: 'yarn'
+    needs: [dependencies, build]
