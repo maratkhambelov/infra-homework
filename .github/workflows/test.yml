@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: '22'
           cache: 'yarn'
-      - name: run npm install
+      - name: yarn install
         run: yarn install
   linters:
     runs-on: ubuntu-latest
